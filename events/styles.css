@@ -1,0 +1,12 @@
+/* ===== GLOBAL NIGHTLIFE THEME STYLES ===== */
+    /* Dark navy base with warm gold accents and neon glow effects */
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at top, rgba(245,166,35,0.12), transparent 28%),
+        linear-gradient(180deg, #0a1628 0%, #07101d 100%);
+    }
+    .glow-text { text-shadow: 0 0 10px rgba(245,166,35,.35), 0 0 24px rgba(245,166,35,.15); }
+    .glow-border { box-shadow: 0 0 0 1px rgba(245,166,35,.18), 0 0 24px rgba(245,166,35,.08); }
+    .neon-card { background: linear-gradient(180deg, rgba(10,22,40,.92), rgba(7,16,29,.95)); }
+    .nav-blur { backdrop-filter: blur(14px); }
