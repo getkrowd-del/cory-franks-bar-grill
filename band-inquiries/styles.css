@@ -1,0 +1,94 @@
+/* ===== GLOBAL THEME STYLES ===== */
+    /* Dark navy rock-club palette with gold accents and strong contrast */
+    :root {
+      --navy: #0a1628;
+      --navy-deep: #07101d;
+      --gold: #f5a623;
+      --gold-soft: #ffd07a;
+      --text: #ffffff;
+      --muted: #c7d2e1;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, rgba(245, 166, 35, 0.08), transparent 28%),
+        linear-gradient(180deg, var(--navy), var(--navy-deep));
+      color: var(--text);
+    }
+
+    /* ===== GUITAR SILHOUETTE DECOR ===== */
+    /* Pure CSS decorative electric guitar shapes for the rock-and-roll vibe */
+    .guitar-silhouette {
+      position: absolute;
+      opacity: 0.12;
+      pointer-events: none;
+      filter: drop-shadow(0 0 22px rgba(245, 166, 35, 0.12));
+    }
+
+    .guitar-silhouette::before,
+    .guitar-silhouette::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(180deg, #f5a623, #c57d0a);
+    }
+
+    .guitar-left {
+      width: 120px;
+      height: 360px;
+      left: -18px;
+      top: 120px;
+      transform: rotate(-18deg);
+    }
+
+    .guitar-left::before {
+      width: 56px;
+      height: 170px;
+      left: 32px;
+      top: 84px;
+      border-radius: 28px;
+    }
+
+    .guitar-left::after {
+      width: 96px;
+      height: 96px;
+      left: 12px;
+      top: 122px;
+      border-radius: 50%;
+      box-shadow:
+        42px 0 0 0 rgba(245, 166, 35, 0.95),
+        10px 94px 0 6px rgba(245, 166, 35, 0.18);
+    }
+
+    .guitar-right {
+      width: 120px;
+      height: 360px;
+      right: -18px;
+      bottom: -40px;
+      transform: rotate(22deg);
+    }
+
+    .guitar-right::before {
+      width: 56px;
+      height: 170px;
+      left: 32px;
+      top: 84px;
+      border-radius: 28px;
+    }
+
+    .guitar-right::after {
+      width: 96px;
+      height: 96px;
+      left: 12px;
+      top: 122px;
+      border-radius: 50%;
+      box-shadow:
+        42px 0 0 0 rgba(245, 166, 35, 0.95),
+        10px 94px 0 6px rgba(245, 166, 35, 0.18);
+    }
+
+    /* ===== FOCUS STYLES ===== */
+    /* Accessibility: visible keyboard focus for links, inputs, and buttons */
+    :focus-visible {
+      outline: 3px solid var(--gold-soft);
+      outline-offset: 3px;
+    }
