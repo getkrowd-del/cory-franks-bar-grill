@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/cory-franks-bar-grill/events/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- SEO Meta Tags -->
+<title>Cory Frank's Bar &amp; Grill Events &amp; Entertainment | Kansas City, MO</title>
+<meta name="description" content="Discover live music, karaoke, bingo, sports, and private event hosting at Cory Frank's Bar &amp; Grill in Kansas City, Missouri." />
+<meta property="og:title" content="Cory Frank's Bar &amp; Grill Events &amp; Entertainment | Kansas City, MO" />
+<meta property="og:description" content="Discover live music, karaoke, bingo, sports, and private event hosting at Cory Frank's Bar &amp; Grill in Kansas City, Missouri." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cory Frank's Bar &amp; Grill Events &amp; Entertainment | Kansas City, MO" />
+<meta name="twitter:description" content="Discover live music, karaoke, bingo, sports, and private event hosting at Cory Frank's Bar &amp; Grill in Kansas City, Missouri." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=4195');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='xKx76Pq';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-white antialiased selection:bg-amber-400/30 selection:text-white">
+  <!-- ============================================================================ -->
+  <!-- STICKY NAVIGATION: Logo, primary pages, and current page highlight          -->
+  <!-- Features: Mobile-friendly links, active Events state, dark glass background  -->
+  <!-- Mobile Padding: Safe spacing to prevent edge clipping on small screens       -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="sticky top-0 z-50 border-b border-amber-400/15 bg-slate-950/80 nav-blur">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 md:px-8 lg:px-12">
+      <div class="flex items-center justify-between gap-4">
+        <a href="/cory-franks-bar-grill/" class="text-xl sm:text-2xl font-extrabold tracking-wide text-amber-400 glow-text">
+          Cory Frank's
+        </a>
+        <div class="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm sm:text-base">
+          <a href="/cory-franks-bar-grill/" class="text-white/80 hover:text-amber-300 transition">Home</a>
+          <a href="#events" class="text-amber-300 font-semibold border-b border-amber-400/80 pb-0.5">Events</a>
+          <a href="/cory-franks-bar-grill/menu/" class="text-white/80 hover:text-amber-300 transition">Menu</a>
+          <a href="/cory-franks-bar-grill/about/" class="text-white/80 hover:text-amber-300 transition">About Us</a>
+          <a href="/cory-franks-bar-grill/band-inquiries/" class="text-white/80 hover:text-amber-300 transition">Band Inquiries</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ======================================================================== -->
+    <!-- HERO SECTION: Events & Entertainment intro with strong nightlife energy  -->
+    <!-- Features: Gold headline, venue identity, location, and anchor CTA         -->
+    <!-- Mobile Padding: Headline remains fully visible at 375px width             -->
+    <!-- ======================================================================== -->
+    <header data-section="hero" class="relative overflow-hidden border-b border-amber-400/15">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,166,35,0.18),transparent_35%),linear-gradient(180deg,rgba(10,22,40,1),rgba(7,16,29,0.96))]"></div>
+      <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-12">
+        <div class="max-w-4xl">
+          <p class="inline-flex items-center rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-amber-300">
+            Kansas City's Premier Bar & Grill
+          </p>
+          <h1 class="mt-5 text-4xl font-black tracking-tight text-amber-400 glow-text sm:text-5xl md:text-6xl">
+            Events &amp; Entertainment
+          </h1>
+          <p class="mt-5 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
+            Something happening every night of the week at Cory Frank's Bar &amp; Grill — live music, karaoke, bingo, sports, and the kind of electric atmosphere that keeps the room buzzing.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#weekly-events" class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-300">
+              See This Week's Lineup
+            </a>
+            <a href="#private-events" class="inline-flex items-center justify-center rounded-full border border-amber-400/40 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-amber-300 hover:text-amber-300">
+              Host an Event
+            </a>
+          </div>
+          <p class="mt-6 text-sm text-white/60">
+            Visit us at <span class="text-white/85">5410 NE Antioch Rd, Kansas City, MO 64118</span>
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======================================================================== -->
+    <!-- WEEKLY RECURRING EVENTS: Glowing cards for each night of the week         -->
+    <!-- Features: Night-by-night schedule, bold labels, nightlife styling         -->
+    <!-- ======================================================================== -->
+    <section id="weekly-events" data-section="weekly-events" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          Weekly Recurring Events
+        </h2>
+        <p class="mt-4 text-white/75">
+          From karaoke classics to live bands and game-night energy, there’s always a reason to pull up to Cory Frank's.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Sunday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Karaoke with DJ Pepper</h3>
+          <p class="mt-3 text-white/75">Every Sunday starting at 8PM.</p>
+          <p class="mt-3 text-white/90">Get the mic and show KC what you've got!</p>
+        </article>
+
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Tuesday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Xtreme Bar Bingo</h3>
+          <p class="mt-3 text-white/75">Every Tuesday.</p>
+          <p class="mt-3 text-white/90">Not your grandma's bingo. Win prizes, drinks, and good times!</p>
+        </article>
+
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Wednesday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Live Music Open Jam</h3>
+          <p class="mt-3 text-white/75">Every Wednesday at 7PM.</p>
+          <p class="mt-3 text-white/90">Local musicians welcome. Come jam with the best of KC!</p>
+        </article>
+
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Thursday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Karaoke</h3>
+          <p class="mt-3 text-white/75">Every Thursday.</p>
+          <p class="mt-3 text-white/90">Mid-week karaoke to get you through the week!</p>
+        </article>
+
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Friday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Live Bands</h3>
+          <p class="mt-3 text-white/75">Every Friday Night.</p>
+          <p class="mt-3 text-white/90">KC's best live bands take the stage!</p>
+        </article>
+
+        <article class="neon-card glow-border rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-400/10">
+          <p class="text-sm font-bold uppercase tracking-[0.28em] text-amber-300">Saturday</p>
+          <h3 class="mt-2 text-2xl font-extrabold text-white">Live Bands</h3>
+          <p class="mt-3 text-white/75">Every Saturday Night.</p>
+          <p class="mt-3 text-white/90">The weekend isn't complete without live music at Cory Frank's!</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================================================================== -->
+    <!-- SPORTS SECTION: Big game energy with TVs, leagues, and drink specials    -->
+    <!-- Features: Strong visual hierarchy and concise sports-night selling points -->
+    <!-- ======================================================================== -->
+    <section data-section="sports" class="border-y border-amber-400/15 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.3em] text-amber-300">Game Day Ready</p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              Catch Every Game
+            </h2>
+            <p class="mt-5 max-w-xl text-white/75 leading-7">
+              With 10 large flat-screen TVs throughout the bar &amp; grill, Cory Frank's keeps every seat close to the action. We cover the NFL, NBA, MLB, NHL, and more — so you never miss a big play.
+            </p>
+            <ul class="mt-6 space-y-3 text-white/88">
+              <li class="flex gap-3"><span class="text-amber-300">●</span> Multiple screens for prime viewing from every angle</li>
+              <li class="flex gap-3"><span class="text-amber-300">●</span> Great drink specials during games</li>
+              <li class="flex gap-3"><span class="text-amber-300">●</span> High-energy crowd, cold drinks, and nonstop sports talk</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-amber-400/20 bg-slate-950/60 p-6 text-center glow-border">
+              <p class="text-4xl font-black text-amber-400">10</p>
+              <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">Big Screens</p>
+            </div>
+            <div class="rounded-2xl border border-amber-400/20 bg-slate-950/60 p-6 text-center glow-border">
+              <p class="text-4xl font-black text-amber-400">4</p>
+              <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">Major Leagues</p>
+            </div>
+            <div class="rounded-2xl border border-amber-400/20 bg-slate-950/60 p-6 text-center glow-border">
+              <p class="text-4xl font-black text-amber-400">7</p>
+              <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">Nights of Action</p>
+            </div>
+            <div class="rounded-2xl border border-amber-400/20 bg-slate-950/60 p-6 text-center glow-border">
+              <p class="text-4xl font-black text-amber-400">100%</p>
+              <p class="mt-2 text-sm uppercase tracking-[0.2em] text-white/70">Game Time Energy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================== -->
+    <!-- PRIVATE EVENTS SECTION: Venue rentals, birthdays, and corporate parties  -->
+    <!-- Features: Clear call to action, reservation guidance, contact note        -->
+    <!-- ======================================================================== -->
+    <section id="private-events" data-section="private-events" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+      <div class="rounded-3xl border border-amber-400/20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 sm:p-10 md:p-12 glow-border">
+        <div class="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.3em] text-amber-300">Private Events</p>
+            <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+              Host Your Event Here
+            </h2>
+            <p class="mt-5 max-w-2xl text-white/75 leading-7">
+              Planning a birthday bash, corporate outing, retirement party, or private celebration? Cory Frank's Bar &amp; Grill brings the food, drinks, music, and atmosphere to make it unforgettable.
+            </p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <h3 class="font-semibold text-white">Perfect For</h3>
+                <p class="mt-1 text-sm text-white/70">Birthdays, office parties, team nights, reunions, and more.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <h3 class="font-semibold text-white">Reservation Note</h3>
+                <p class="mt-1 text-sm text-white/70">Call us to reserve space and lock in your date.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="rounded-3xl border border-amber-400/25 bg-amber-400/10 p-6">
+            <h3 class="text-2xl font-bold text-amber-300">Let's Plan It</h3>
+            <p class="mt-3 text-white/80">
+              Need a lively venue with strong drinks, good food, and a crowd-friendly vibe? This is your spot.
+            </p>
+            <div class="mt-6 space-y-3 text-sm text-white/85">
+              <p><span class="font-semibold text-amber-300">Location:</span> 5410 NE Antioch Rd, Kansas City, MO 64118</p>
+              <p><span class="font-semibold text-amber-300">Reservations:</span> Please call ahead for private event availability.</p>
+            </div>
+            <a href="/cory-franks-bar-grill/contact/" class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-5 py-3 font-semibold text-slate-950 transition hover:bg-amber-300">
+              Contact Us About Your Event
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================== -->
+    <!-- AT A GLANCE SECTION: Quick values and reasons to choose the venue        -->
+    <!-- Features: Fast-scanning highlights for repeat visitors and new guests     -->
+    <!-- ======================================================================== -->
+    <section data-section="highlights" class="border-y border-amber-400/15 bg-white/5">
+      <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-8 lg:px-12">
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-amber-400/20 bg-slate-950/50 p-6 glow-border">
+            <h3 class="text-xl font-bold text-white">Live Every Week</h3>
+            <p class="mt-2 text-white/72">Karaoke, open jam sessions, and live bands keep the calendar packed.</p>
+          </div>
+          <div class="rounded-2xl border border-amber-400/20 bg-slate-950/50 p-6 glow-border">
+            <h3 class="text-xl font-bold text-white">Sports + Specials</h3>
+            <p class="mt-2 text-white/72">Big screens and game-day drink deals make every matchup better.</p>
+          </div>
+          <div class="rounded-2xl border border-amber-400/20 bg-slate-950/50 p-6 glow-border">
+            <h3 class="text-xl font-bold text-white">Private Party Ready</h3>
+            <p class="mt-2 text-white/72">Book your next birthday, gathering, or company event with us.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================== -->
+    <!-- FAQ SECTION: Common questions about events and booking                   -->
+    <!-- Features: Simple accordion-style content without JavaScript              -->
+    <!-- ======================================================================== -->
+    <section data-section="faq" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+      <div class="max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[0.3em] text-amber-300">FAQ</p>
+        <h2 class="mt-3 text-3xl font-bold text-white sm:text-4xl">
+          Event Questions, Answered
+        </h2>
+      </div>
+
+      <div class="mt-8 grid gap-4">
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-white">Do I need to make reservations for events?</summary>
+          <p class="mt-3 text-white/72">For regular weekly events, just come ready to have fun. For private parties or larger groups, please call ahead to reserve space.</p>
+        </details>
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-white">What nights have live music?</summary>
+          <p class="mt-3 text-white/72">Live music shows and band nights run every Friday and Saturday, with open jam sessions on Wednesdays.</p>
+        </details>
+        <details class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <summary class="cursor-pointer list-none font-semibold text-white">Is there something happening every night?</summary>
+          <p class="mt-3 text-white/72">Yes — from karaoke and bingo to live bands and sports, Cory Frank's keeps the energy going all week long.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ======================================================================== -->
+    <!-- CALL TO ACTION SECTION: Final push for visitors to stop in tonight        -->
+    <!-- Features: Bold statement, location reminder, direct next step             -->
+    <!-- ======================================================================== -->
+    <section data-section="cta" class="border-t border-amber-400/15 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950">
+      <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 md:px-8 lg:px-12">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          Make Cory Frank's Your Next Night Out
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-white/75 leading-7">
+          Whether you're here to sing, cheer, dance, or celebrate, our events page is your guide to the best nights in Kansas City.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="#weekly-events" class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-300">
+            Browse Events
+          </a>
+          <a href="/cory-franks-bar-grill/band-inquiries/" class="inline-flex items-center justify-center rounded-full border border-amber-400/40 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-amber-300 hover:text-amber-300">
+            Submit Band Inquiry
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER: Venue info, brand reinforcement, and helpful page links             -->
+  <!-- Features: Dark matching footer with location and quick navigation            -->
+  <!-- ============================================================================ -->
+  <footer data-section="footer" class="border-t border-amber-400/15 bg-slate-950">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:px-8 lg:px-12">
+      <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div>
+          <p class="text-2xl font-extrabold text-amber-400 glow-text">Cory Frank's</p>
+          <p class="mt-3 max-w-md text-sm leading-6 text-white/70">
+            Kansas City's premier bar &amp; grill for live entertainment, game-day gatherings, karaoke nights, and unforgettable private events.
+          </p>
+          <p class="mt-4 text-sm text-white/70">5410 NE Antioch Rd, Kansas City, MO 64118</p>
+        </div>
+        <div class="grid grid-cols-2 gap-6 text-sm">
+          <div>
+            <p class="font-semibold text-white">Navigate</p>
+            <ul class="mt-3 space-y-2 text-white/70">
+              <li><a href="/cory-franks-bar-grill/" class="hover:text-amber-300">Home</a></li>
+              <li><a href="#events" class="hover:text-amber-300">Events</a></li>
+              <li><a href="/cory-franks-bar-grill/menu/" class="hover:text-amber-300">Menu</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-white">More</p>
+            <ul class="mt-3 space-y-2 text-white/70">
+              <li><a href="/cory-franks-bar-grill/about/" class="hover:text-amber-300">About Us</a></li>
+              <li><a href="/cory-franks-bar-grill/band-inquiries/" class="hover:text-amber-300">Band Inquiries</a></li>
+              <li><a href="/cory-franks-bar-grill/contact/" class="hover:text-amber-300">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 border-t border-white/10 pt-6 text-sm text-white/55">
+        © 2026 Cory Frank's Bar &amp; Grill. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
