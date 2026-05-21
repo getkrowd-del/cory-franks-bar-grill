@@ -1,0 +1,64 @@
+/* ===== CORE NIGHTLIFE THEME ===== */
+    :root { color-scheme: dark; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0a1628;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO / NEON BACKGROUND ===== */
+    .hero-glow {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(245,166,35,.18), transparent 20%),
+        radial-gradient(circle at 80% 10%, rgba(86,164,255,.15), transparent 18%),
+        linear-gradient(120deg, #08111f, #0a1628 35%, #0f1d35 65%, #09101d);
+      background-size: 200% 200%;
+      animation: gradientShift 14s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .neon-border {
+      box-shadow:
+        0 0 0 1px rgba(245,166,35,.18),
+        0 0 30px rgba(245,166,35,.08),
+        inset 0 0 30px rgba(255,255,255,.02);
+    }
+    .neon-text {
+      text-shadow: 0 0 18px rgba(245,166,35,.25), 0 0 40px rgba(245,166,35,.12);
+    }
+    .script-logo {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: .02em;
+    }
+    .gold-line {
+      background: linear-gradient(90deg, transparent, #f5a623, transparent);
+    }
+    .card-sheen {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    }
+
+    /* ===== SMALL POLISH ===== */
+    .grid-shadow {
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    }
+    .map-frame {
+      background:
+        linear-gradient(135deg, rgba(245,166,35,.12), rgba(255,255,255,.02)),
+        radial-gradient(circle at top, rgba(86,164,255,.12), transparent 35%);
+    }
+    .active-nav {
+      position: relative;
+    }
+    .active-nav::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -10px;
+      height: 2px;
+      background: #f5a623;
+      box-shadow: 0 0 12px rgba(245,166,35,.8);
+      border-radius: 999px;
+    }
