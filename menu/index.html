@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/cory-franks-bar-grill/menu/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- SEO Meta Tags -->
+<title>Cory Frank's Bar &amp; Grill Menu | Kansas City Bar &amp; Grill</title>
+<meta name="description" content="A premium dark navy and gold menu page for Cory Frank's Bar &amp; Grill in Kansas City, featuring appetizers, burgers, drinks, desserts, happy hour, and band inquiries." />
+<meta property="og:title" content="Cory Frank's Bar &amp; Grill Menu | Kansas City Bar &amp; Grill" />
+<meta property="og:description" content="A premium dark navy and gold menu page for Cory Frank's Bar &amp; Grill in Kansas City, featuring appetizers, burgers, drinks, desserts, happy hour, and band inquiries." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cory Frank's Bar &amp; Grill Menu | Kansas City Bar &amp; Grill" />
+<meta name="twitter:description" content="A premium dark navy and gold menu page for Cory Frank's Bar &amp; Grill in Kansas City, featuring appetizers, burgers, drinks, desserts, happy hour, and band inquiries." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=4196');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='6ZLn87';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen font-sans antialiased">
+  <!-- ============================================================================ -->
+  <!-- STICKY NAVBAR: Brand logo and in-page navigation                              -->
+  <!-- Features: Sticky top bar, highlighted active menu item, mobile-friendly links -->
+  <!-- Mobile Padding: Ensures nav never touches viewport edges                      -->
+  <!-- ============================================================================ -->
+  <nav data-section="navbar" class="sticky top-0 z-50 sticky-glass border-b border-amber-500/15">
+    <div class="mx-auto max-w-7xl px-4 py-4 md:px-8 lg:px-12 flex items-center justify-between gap-4">
+      <a href="#hero" class="flex items-center gap-3 min-w-0">
+        <div class="h-11 w-11 rounded-full bg-amber-500/15 border border-amber-400/30 flex items-center justify-center shadow-[0_0_24px_rgba(245,166,35,.22)]">
+          <span class="text-amber-400 font-black text-lg">CF</span>
+        </div>
+        <div class="min-w-0">
+          <p class="gold-text font-black tracking-wide text-lg leading-none">Cory Frank's</p>
+          <p class="text-white/60 text-xs mt-1 truncate">Bar &amp; Grill • Kansas City, MO</p>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm font-semibold">
+        <a href="#hero" class="text-white/80 hover:text-amber-400 transition">Home</a>
+        <a href="#events" class="text-white/80 hover:text-amber-400 transition">Events</a>
+        <a href="#menu" class="active-nav pb-1 transition">Menu</a>
+        <a href="#about" class="text-white/80 hover:text-amber-400 transition">About Us</a>
+        <a href="#band-inquiries" class="text-white/80 hover:text-amber-400 transition">Band Inquiries</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============================================================================ -->
+    <!-- HERO SECTION: Main menu hero with premium headline and location              -->
+    <!-- Features: Gold typography, address, quick menu cues                          -->
+    <!-- Mobile Padding: Keeps headline fully visible on 375px screens               -->
+    <!-- ============================================================================ -->
+    <section data-section="hero" id="hero" class="px-4 py-10 md:px-8 lg:px-12 md:py-16">
+      <div class="mx-auto max-w-7xl">
+        <div class="menu-card rounded-3xl overflow-hidden">
+          <div class="p-6 sm:p-10 lg:p-14 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <p class="uppercase tracking-[0.35em] text-amber-400/80 text-xs sm:text-sm font-bold">Kansas City's Premier Bar &amp; Grill</p>
+              <h1 class="mt-4 text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.95] gold-text">The Menu</h1>
+              <p class="mt-5 text-lg sm:text-xl text-white/85 max-w-xl">Handcrafted drinks &amp; elevated bar food</p>
+              <div class="mt-7 flex flex-wrap gap-3 text-sm">
+                <span class="px-4 py-2 rounded-full bg-amber-500/10 border border-amber-400/20 text-amber-300">5410 NE Antioch Rd</span>
+                <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80">Kansas City, MO 64118</span>
+                <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80">Happy Hour Mon–Fri 3PM–6PM</span>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="absolute inset-0 rounded-3xl bg-amber-500/10 blur-3xl"></div>
+              <div class="relative rounded-3xl border border-amber-400/20 bg-[#08111f] p-6 sm:p-8">
+                <h2 class="text-2xl font-bold text-white">What people come back for</h2>
+                <div class="glow-divider my-5"></div>
+                <ul class="space-y-4 text-white/85">
+                  <li class="flex items-start gap-3"><span class="text-amber-400 mt-0.5">✦</span><span>House smash burgers stacked with bold, smoky flavor.</span></li>
+                  <li class="flex items-start gap-3"><span class="text-amber-400 mt-0.5">✦</span><span>Cold beer, signature cocktails, and crowd-favorite shots.</span></li>
+                  <li class="flex items-start gap-3"><span class="text-amber-400 mt-0.5">✦</span><span>Late-night bites made to pair with game day, music, and friends.</span></li>
+                </ul>
+                <div class="mt-7 grid grid-cols-2 gap-4">
+                  <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                    <p class="text-white/55 text-xs uppercase tracking-[0.28em]">Dinner Vibe</p>
+                    <p class="mt-2 font-semibold text-white">Premium &amp; relaxed</p>
+                  </div>
+                  <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                    <p class="text-white/55 text-xs uppercase tracking-[0.28em]">Best For</p>
+                    <p class="mt-2 font-semibold text-white">Groups &amp; game nights</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- EVENTS / QUICK INFO SECTION: Short promo band for events and live nights     -->
+    <!-- Features: Compact callouts with easy-to-scan details                         -->
+    <!-- ============================================================================ -->
+    <section data-section="events" id="events" class="px-4 py-2 md:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="rounded-3xl border border-amber-400/15 bg-white/5 p-6 sm:p-8">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div>
+              <p class="text-amber-400 text-sm font-bold uppercase tracking-[0.3em]">Events &amp; Game Nights</p>
+              <h2 class="mt-2 text-2xl sm:text-3xl font-black text-white">Big screens, live energy, and a menu built for groups.</h2>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/20">Watch Parties</span>
+              <span class="px-4 py-2 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/20">Private Gatherings</span>
+              <span class="px-4 py-2 rounded-full bg-amber-500/15 text-amber-300 border border-amber-400/20">Live Music Nights</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- MENU SECTION: Core menu categories with premium cards and glowing dividers   -->
+    <!-- Features: Appetizers, burgers, drinks, desserts, prices, and notes         -->
+    <!-- ============================================================================ -->
+    <section data-section="menu" id="menu" class="px-4 py-10 md:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-amber-400 text-sm font-bold uppercase tracking-[0.35em]">Menu Highlights</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black text-white">Built for cold drinks, hot plates, and good company.</h2>
+          <p class="mt-4 text-white/75">From shareable starters to stacked sandwiches, every item is made to keep the night going.</p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-2">
+          <article class="menu-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-2xl font-black gold-text">Appetizers</h3>
+            <div class="glow-divider my-5"></div>
+            <div class="space-y-5">
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Loaded Nachos</p><p class="text-white/70 text-sm">jalapeños, cheese sauce, sour cream, pico</p></div><p class="gold-text font-bold whitespace-nowrap">$12</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Wings (6 or 12)</p><p class="text-white/70 text-sm">buffalo, BBQ, garlic parm, honey sriracha</p></div><p class="gold-text font-bold whitespace-nowrap">$10 / $18</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Mozzarella Sticks</p><p class="text-white/70 text-sm">marinara dipping sauce</p></div><p class="gold-text font-bold whitespace-nowrap">$9</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Onion Rings</p><p class="text-white/70 text-sm">beer battered, ranch dip</p></div><p class="gold-text font-bold whitespace-nowrap">$8</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Pretzel Bites</p><p class="text-white/70 text-sm">beer cheese sauce</p></div><p class="gold-text font-bold whitespace-nowrap">$9</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-2xl font-black gold-text">Burgers &amp; Sandwiches</h3>
+            <div class="glow-divider my-5"></div>
+            <div class="space-y-5">
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">The Cory Frank Burger</p><p class="text-white/70 text-sm">double smash patty, special sauce, lettuce, tomato, pickles</p></div><p class="gold-text font-bold whitespace-nowrap">$14</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">BBQ Bacon Burger</p><p class="text-white/70 text-sm">smoked bacon, cheddar, crispy onions, BBQ sauce</p></div><p class="gold-text font-bold whitespace-nowrap">$15</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">KC BBQ Sandwich</p><p class="text-white/70 text-sm">slow-smoked pulled pork, coleslaw, pickles</p></div><p class="gold-text font-bold whitespace-nowrap">$13</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Chicken Sandwich</p><p class="text-white/70 text-sm">crispy or grilled, lettuce, tomato, comeback sauce</p></div><p class="gold-text font-bold whitespace-nowrap">$13</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Club Sandwich</p><p class="text-white/70 text-sm">turkey, bacon, swiss, avocado, toasted sourdough</p></div><p class="gold-text font-bold whitespace-nowrap">$12</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-2xl font-black gold-text">Drinks &amp; Cocktails</h3>
+            <div class="glow-divider my-5"></div>
+            <div class="space-y-5 text-white/85">
+              <p>Signature cocktails, beer on tap, craft cans, wine, and shots.</p>
+              <p class="text-lg font-semibold text-white">Daily drink specials — ask your server!</p>
+              <div class="rounded-2xl border border-amber-400/15 bg-amber-500/10 p-5">
+                <p class="text-amber-300 font-bold uppercase tracking-[0.28em] text-xs">Happy Hour</p>
+                <p class="mt-2 text-xl font-black text-white">Mon–Fri 3PM–6PM</p>
+                <p class="mt-1 text-white/75">Discounted drinks &amp; apps to kick off the evening right.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card rounded-3xl p-6 sm:p-8">
+            <h3 class="text-2xl font-black gold-text">Desserts</h3>
+            <div class="glow-divider my-5"></div>
+            <div class="space-y-5">
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Brownie Sundae</p><p class="text-white/70 text-sm">warm brownie, ice cream, chocolate drizzle</p></div><p class="gold-text font-bold whitespace-nowrap">$7</p>
+              </div>
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="font-bold text-white">Cheesecake Slice</p><p class="text-white/70 text-sm">classic creamy cheesecake</p></div><p class="gold-text font-bold whitespace-nowrap">$6</p>
+              </div>
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <p class="text-white/85">Menu subject to change. Ask your server about daily specials and seasonal items.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- ABOUT SECTION: Brand story and atmosphere description                        -->
+    <!-- Features: Premium tone, neighborhood-friendly messaging                     -->
+    <!-- ============================================================================ -->
+    <section data-section="about" id="about" class="px-4 py-10 md:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-6 items-stretch">
+        <article class="menu-card rounded-3xl p-6 sm:p-8">
+          <p class="text-amber-400 text-sm font-bold uppercase tracking-[0.35em]">About Us</p>
+          <h2 class="mt-3 text-3xl font-black text-white">Neighborhood energy with a polished bar-and-grill feel.</h2>
+          <div class="glow-divider my-5"></div>
+          <p class="text-white/80 leading-relaxed">
+            Cory Frank's Bar &amp; Grill brings Kansas City a spot where the drinks are cold, the food is satisfying,
+            and the atmosphere feels like the right place to stay awhile. Whether you're stopping in for wings and a beer,
+            or gathering the whole crew for dinner, the menu is built around easy favorites done right.
+          </p>
+        </article>
+
+        <article class="menu-card rounded-3xl p-6 sm:p-8">
+          <p class="text-amber-400 text-sm font-bold uppercase tracking-[0.35em]">Why Guests Love It</p>
+          <div class="glow-divider my-5"></div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="font-bold text-white">Bold flavors</p>
+              <p class="text-white/70 text-sm mt-1">Smash burgers, saucy wings, and shareable starters.</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="font-bold text-white">Great value</p>
+              <p class="text-white/70 text-sm mt-1">Menu favorites that feel premium without feeling precious.</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="font-bold text-white">Game-day ready</p>
+              <p class="text-white/70 text-sm mt-1">Perfect for watches, meetups, and weekend hangs.</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="font-bold text-white">KC proud</p>
+              <p class="text-white/70 text-sm mt-1">A local favorite rooted in the Northland.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- BAND INQUIRIES SECTION: Dedicated callout for live music and booking leads   -->
+    <!-- Features: Contact-forward information and easy-to-spot CTA                  -->
+    <!-- ============================================================================ -->
+    <section data-section="band-inquiries" id="band-inquiries" class="px-4 py-10 md:px-8 lg:px-12">
+      <div class="mx-auto max-w-7xl">
+        <div class="rounded-3xl border border-amber-400/20 bg-gradient-to-r from-amber-500/10 to-transparent p-6 sm:p-8">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div>
+              <p class="text-amber-300 text-sm font-bold uppercase tracking-[0.35em]">Band Inquiries</p>
+              <h2 class="mt-2 text-3xl font-black text-white">Bring the sound. We'll bring the crowd and the drinks.</h2>
+              <p class="mt-3 text-white/75 max-w-2xl">Interested in booking live music or a special event night? Cory Frank's is always looking for high-energy acts that fit the room.</p>
+            </div>
+            <a href="mailto:info@coryfranksbarandgrill.com" class="inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-3 font-bold text-black hover:bg-amber-400 transition shadow-lg shadow-amber-500/20">
+              Email Band Booking
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- FOOTER SECTION: Address, hours prompt, and brand-safe closing                -->
+    <!-- Features: Dark footer matching the site style                                -->
+    <!-- ============================================================================ -->
+    <footer data-section="footer" class="border-t border-amber-400/15 bg-[#07111f]">
+      <div class="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p class="gold-text font-black text-lg">Cory Frank's Bar &amp; Grill</p>
+            <p class="text-white/65 text-sm mt-1">5410 NE Antioch Rd, Kansas City, MO 64118</p>
+          </div>
+          <div class="text-sm text-white/65">
+            <p>Menu subject to change. Ask your server about daily specials and seasonal items.</p>
+            <p class="mt-1">© 2026 Cory Frank's Bar &amp; Grill</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
